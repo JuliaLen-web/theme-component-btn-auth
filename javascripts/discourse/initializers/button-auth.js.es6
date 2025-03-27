@@ -15,7 +15,8 @@ export default {
 
           const buttonAuthWrapper = document.createElement("div");
           buttonAuthWrapper.classList.add("btn-auth-wrapper");
-          buttonAuthWrapper.classList.add("post-action-menu__reply.reply");
+          buttonAuthWrapper.classList.add("post-action-menu__reply");
+          buttonAuthWrapper.classList.add("reply");
 
 
           const buttonAuth = document.createElement("a");
