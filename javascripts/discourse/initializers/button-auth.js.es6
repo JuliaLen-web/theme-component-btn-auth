@@ -15,8 +15,8 @@ export default {
 
           const buttonAuthWrapper = document.createElement("div");
           buttonAuthWrapper.classList.add("btn-auth-wrapper");
-          buttonAuthWrapper.classList.add("post-action-menu__reply");
-          buttonAuthWrapper.classList.add("reply");
+          // buttonAuthWrapper.classList.add("post-action-menu__reply");
+          // buttonAuthWrapper.classList.add("reply");
 
 
           const buttonAuth = document.createElement("a");
@@ -27,6 +27,24 @@ export default {
           const buttonText = document.createTextNode(`Комментировать`);
           buttonAuth.appendChild(buttonText);
           // const afterAllPosts = document.querySelector(".anon .embedded .container.posts");
+
+          buttonAuth.addEventListener('click', ()=> {
+            const { REPLY } = require('discourse/models/composer').default;
+
+            const composer = Discourse.__container__.lookup('controller:composer');
+
+            setTimeout(function() {
+              const topic = Discourse.__container__.lookup("controller:topic").get("model");
+              if (topic) {
+                composer.open({
+                  action: REPLY,
+                  draftKey: topic.draft_key,
+                  draftSequence: topic.draft_sequence,
+                  topic,
+                });
+              }
+            }, 0)
+          })
 
           buttonAuthWrapper.appendChild(buttonAuth);
           const afterAllPosts = document.querySelector(".container.posts");
