@@ -10,7 +10,6 @@ export default {
       api.onPageChange((url, title) => {
 
         function addButton() {
-          console.log(api.getCurrentUser())
           if (document.querySelector('.btn-nextNew-wrapper') || !document.querySelector(".container.posts")) return false;
 
           const buttonAuthWrapper = document.createElement("div");
